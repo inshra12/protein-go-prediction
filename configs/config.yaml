@@ -1,0 +1,96 @@
+paths:
+  project_root: .
+  data_raw: data/raw
+  data_processed: data/processed
+  results: results/tables
+  figures: results/figures
+  models: data/processed/models
+data:
+  min_proteins_per_go: 5
+  remove_zero_label_proteins: true
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  protbert_max_residues: 1000
+  esm2_max_residues: 1000
+  static_features:
+  - "\u03B1%"
+  - "\u03B2%"
+  - Coil%
+  - Len.
+  dynamic_features:
+  - Avg. RMSF
+  - Avg. gyr.
+  - Div. SE
+  - Div. MM
+split:
+  main_split: homology
+  random_seed_for_split: 42
+homology_split:
+  enabled: true
+  method: cdhit
+  identity_threshold: 0.4
+  word_size: 2
+  cdhit_binary: cd-hit
+go_hierarchy:
+  enabled: true
+  obo_path: data/raw/go-basic.obo
+  propagate_labels: true
+  propagate_predictions: true
+training_seeds:
+- 42
+- 1
+- 7
+training:
+  max_epochs: 100
+  early_stopping_patience: 10
+  gradient_clip_norm: 1.0
+  focal_loss_alpha: 0.75
+  focal_loss_gamma: 2.0
+  cosine_annealing_tmax: 50
+  mlp:
+    batch_size: 256
+    learning_rate: 0.0003
+    weight_decay: 0.0001
+  cnn:
+    batch_size: 256
+    learning_rate: 0.0001
+    weight_decay: 1.0e-05
+  resffn:
+    batch_size: 128
+    learning_rate: 0.0001
+    weight_decay: 1.0e-05
+    hidden_dim: 512
+    num_layers: 3
+    dropout: 0.1
+hyperparameter_search:
+  enabled: true
+  feature_set_for_tuning: pes
+  learning_rates:
+  - 0.0001
+  - 0.0002
+  - 0.0003
+  weight_decays:
+  - 1.0e-05
+  - 0.0001
+baseline:
+  name: continuous_training_frequency
+  evaluate_all_go_terms: true
+bootstrap:
+  enabled: true
+  n_resamples: 1000
+  confidence_level: 0.95
+  random_seed: 0
+feature_extraction:
+  protbert_batch_size: 16
+  esm2_batch_size: 4
+xai:
+  enabled: true
+  integrated_gradients_steps: 50
+  permutation_repeats: 20
+  run_leave_one_modality_out: true
+  terms_per_protein:
+    top1: 1
+    correct_terms: 2
+    incorrect_terms: 2
+    rare_terms: 1
