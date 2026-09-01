@@ -1,0 +1,16 @@
+transformers
+sentencepiece
+fair-esm
+captum
+goatools
+biopython
+PyYAML
+tqdm
+joblib
+scipy
+seaborn
+matplotlib
+pandas
+numpy
+scikit-learn
+torch
