@@ -18,12 +18,10 @@ protein-go-prediction/
 ├── configs/           # Configuration files
 ├── data/              # Raw and processed data
 ├── results/           # Figures and tables
-├── src/               # Notebooks and (future) source code
+├── src/               # source code
 ├── requirements.txt
 └── README.md
 
-## Status
-Currently research notebooks. Being refactored into a clean, reproducible software package.
 
 ## Setup
 ```bash
