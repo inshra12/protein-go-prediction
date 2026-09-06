@@ -55,9 +55,7 @@ protein-go-prediction/
 ├── configs/
 │   └── config.yaml
 ├── data/
-│   ├── raw/
 │   └── processed/
-├── results/
 ├── src/
 │   └── protein_go/
 │       ├── config.py
