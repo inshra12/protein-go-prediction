@@ -12,16 +12,17 @@ __pycache__/
 *.egg-info/
 .ipynb_checkpoints/
 
-# Data & models (usually too large for Git)
+# Keep the clean processed data, but ignore the full backup
+data/processed_full_backup/
 data/raw/
-data/processed/
-*.pt
+
+# Ignore other large/unnecessary model files if any appear later
 *.pth
 *.h5
 *.pkl
 *.joblib
 
-# Results (optional — you can track small tables/figures later)
+# Results
 results/figures/
 results/tables/
 
@@ -29,7 +30,5 @@ results/tables/
 .DS_Store
 .vscode/
 *.swp
-
-# Jupyter
-.ipynb_checkpoints/
 EOF
+notebooks/
